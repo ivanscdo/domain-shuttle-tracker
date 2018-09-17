@@ -78,7 +78,13 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">Search by Name</span>
             </div>
-            <input class="form-control" id="searched-shuttle-driver">
+            <!-- <input class="form-control" id="searched-shuttle-driver"> -->
+            <select class="form-control" id="searched-shuttle-driver">
+                    <option>Greg Orsak-Ramirez</option>
+                    <option>Michael Medrano</option>
+                    <option>Joe Yniesta</option>
+                    <option>Troy Choate</option>
+                </select>
             <button type="submit" class="btn btn-info col-md-1 col-sm" id="search-by-name">Search</button>
         </div>
     </div>
@@ -146,6 +152,7 @@
 
     <script type="text/javascript">
         $("#search-by-name").on("click", function() {
+            $("#display-logs").empty();
             var searchedShuttleDriver = $("#searched-shuttle-driver").val().trim();
     
             // console.log(searchedShuttleDriver);
