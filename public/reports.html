@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Domain Shuttle Log</title>
+</head>
+<body>
+<div class="container">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="/">The Domain Shuttle Log Tracker</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <!-- <li class="nav-item active">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                    </li> -->
+
+                    <!-- <li class="nav-item">
+                    <a class="nav-link" href="#">Resources</a>
+                </li> -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Shuttle Logs
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/form">Log Rides</a>
+                        <!-- <a class="dropdown-item" href="/all-logs">Past Rides</a> -->
+                        <!-- <a class="dropdown-item" href="#">Reports</a> -->
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Reports
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/reports">Pull Reports</a>
+                        <!-- <a class="dropdown-item" href="/reports">Report by Name</a> -->
+                        <!-- <a class="dropdown-item" href="/reports">Report by Date</a> -->
+                        <!-- <a class="dropdown-item" href="/reports">Report by Shuttle</a> -->
+                        </div>
+                    </li>
+
+
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="#">Logout</a>
+                    </li> -->
+                </ul>
+            </div>
+    </nav>
+
+<!-- </div>
+<div class="container"> -->
+    
+    <div class="jumbotron">
+        <h1 class="display-4">Reports</h1>
+        <h2>Pull reports by Name</h2>
+
+        <p class="lead">Search all shuttle logs by shuttle driver</p>
+        <hr class="my-4">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Search by Name</span>
+            </div>
+            <input class="form-control" id="searched-shuttle-driver">
+            <button type="submit" class="btn btn-primary" id="search-by-name">Search</button>
+        </div>
+    </div>
+
+</div>
+<div class="container">
+
+    <div class="card">
+        <table class="table" >
+            <thead>
+                <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Date</th>
+                <th scope="col">Shuttle</th>
+                <th scope="col">Shift</th>
+                <th scope="col">Time</th>
+                <th scope="col">Pick Up</th>
+                <th scope="col">Drop Off</th>
+                <th scope="col">Passengers</th>
+                <th scope="col">Contact</th>
+                <th scope="col">Tips</th>
+                <!-- <th scope="col">Tourist</th>
+                <th scope="col">Resident</th>
+                <th scope="col">Northside</th> -->
+                <!-- <th scope="col">Notes</th> -->
+                <!-- <th scope="col">Log Created</th> -->
+                <!-- <th scope="col">Log Updated</th> -->
+                </tr>
+            </thead>
+            <tbody id="display-logs">
+                <tr>
+                    <th scope="row">Penny</th>
+                    <td>Mon Mar 13 2012</td>
+                    <td>Blue</td>
+                    <td>MID</td>
+                    <td>12:00 PM</td>
+                    <td>EP</td>
+                    <td>ATX</td>
+                    <td>3</td>
+                    <td>Ride</td>
+                    <td>$350</td>
+                    <!-- <td>This is a note</td> -->
+                    <!-- <td>9/16/18</td> -->
+                    <!-- <td>9/16/18</td> -->
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+
+</div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <!-- <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script> -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $("#search-by-name").on("click", function() {
+            var searchedShuttleDriver = $("#searched-shuttle-driver").val().trim();
+    
+            // console.log(searchedShuttleDriver);
+            // console.log("red wine, ...");
+    
+            $.get("/logs-by-name/" + searchedShuttleDriver, function(data) {
+                // console.log(data);
+                // console.log(data.length);
+                // console.log(data[0].name);
+
+                for(let i = 0;i < data.length; i++) {
+                    console.log(data[i].name);
+                    var logTableRow = $("<tr>");
+                    var logTableHead = $("<th>");
+
+                    logTableHead.attr("scope", "row");
+                    // logTableRow.attr("id", "append-table-data-"+i);
+                    logTableRow.append(logTableHead);
+                    $("#display-logs").append(logTableRow);
+
+                    for(let value in data[i]) {
+                        // console.log(value + ":" + data[i][value]);
+                        if (value === "name") {
+                            // console.log(value + ":" + data[i][value]);
+                            $(logTableHead).text(data[i][value]);
+
+                        } 
+                        else if (value === "shuttle") {
+                            var shuttleTD = $("<td>");
+                            shuttleTD.text(data[i][value]);
+                            logTableRow.append(shuttleTD);
+
+                        }
+                         else if (value === "shift") {
+                            var shiftTD = $("<td>");
+                            shiftTD.text(data[i][value]);
+                            logTableRow.append(shiftTD);
+
+                        } 
+                        else if (value === "date" ){
+                            var date = new Date(data[i][value]);
+
+                            var dateTD = $("<td>");
+                            dateTD.text(date.toDateString());
+                            logTableRow.append(dateTD);
+
+                        } 
+                        else if (value === "time" ) {
+                            var timeTD = $("<td>");
+                            timeTD.text(data[i][value]);
+                            logTableRow.append(timeTD);
+
+                        } 
+                        else if (value === "pickUp") {
+                            var pickUpTD = $("<td>");
+                            pickUpTD.text(data[i][value]);
+                            logTableRow.append(pickUpTD);
+
+                        } 
+                        else if (value === "dropOff") {
+                            var dropOffTD = $("<td>");
+                            dropOffTD.text(data[i][value]);
+                            logTableRow.append(dropOffTD);
+
+                        } 
+                        else if (value === "passengers") {
+                            var passengersTD = $("<td>");
+                            passengersTD.text(data[i][value]);
+                            logTableRow.append(passengersTD);
+
+                        } 
+                        else if (value === "contact") {
+                            var contactTD = $("<td>");
+                            contactTD.text(data[i][value]);
+                            logTableRow.append(contactTD);
+
+                        } 
+                        else if (value === "tips") {
+                            var tipsTD = $("<td>");
+                            tipsTD.text(data[i][value]);
+                            logTableRow.append(tipsTD);
+                            
+                        }
+                    }
+                }
+                // var shuttleLog = data[0];
+            });
+        });
+    </script>
+
+
+  </body>
+</html>
