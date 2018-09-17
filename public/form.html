@@ -72,37 +72,37 @@
     <div class="container">
         <form action="/submit-shuttle-log" method="post" class="log-form">
             <div class="row">
-                <div class="form-group col">
+                <div class="form-group col-sm">
                     <label for="shuttle-driver-name">Name</label>
                     <input type="text" name="name" class="form-control" id="shuttle-driver-name" placeholder="Name">
                 </div>
-                <div class="form-group col">
+                <div class="form-group col-sm">
                     <label for="shuttle-log-date">Date</label>
                     <input type="text" name="date" class="form-control" id="shuttle-log-date" placeholder="MM/DD/YY">
                 </div>
-                <div class="form-group col">
+                <div class="form-group col-sm">
                     <label for="shuttle-type">Shuttle</label>
                     <input type="text" name="shuttle" class="form-control" id="shuttle-type" placeholder="ADA or 13 Passenger">
                 </div>
-                <div class="form-group col">
+                <div class="form-group col-sm">
                     <label for="shuttle-driver-shift">Shift</label>
                     <input type="text" name="shift" class="form-control" id="shuttle-driver-shift" placeholder="AM, MID, or PM">
                 </div>
             </div>
             <div class="row">
-                <div class="form-group col">
+                <div class="form-group col-sm col-md-4">
                     <label for="shuttle-log-time">Time</label>
                     <input type="text" name="time" class="form-control" id="shuttle-log-time" placeholder="00:00">
                 </div>
-                <div class="form-group col">
+                <div class="form-group col-sm col-md-4">
                     <label for="shuttle-log-pickUp">Pick Up Location</label>
                     <input type="text" name="pickUp" class="form-control" id="shuttle-log-pickUp" placeholder="Retailer">
                 </div>
-                <div class="form-group col">
+                <div class="form-group col-sm col-md-4">
                     <label for="shuttle-log-dropOff">Drop Off Location</label>
                     <input type="text" name="dropOff" class="form-control" id="shuttle-log-dropOff" placeholder="Retailer">
                 </div>
-                <div class="form-group col">
+                <div class="form-group col-sm col-md-4">
                     <label for="shuttle-log-passengers">Passengers</label>
                     <select class="form-control" name="passengers"  id="shuttle-log-passengers">
                         <option>1</option>
@@ -121,7 +121,7 @@
                         <option>13+</option>
                     </select>
                 </div>
-                <div class="form-group col">
+                <div class="form-group col-sm col-md-4">
                     <label for="shuttle-log-contact">Contact Method</label>
                     <select name="contact" class="form-control" id="shuttle-log-contact">
                     <option>Call</option>
@@ -129,14 +129,14 @@
                     <option>Radio</option>
                     </select>
                 </div>
-                <div class="form-group col">
+                <div class="form-group col-sm col-md-4">
                     <label for="shuttle-log-tips">Tips</label>
                     <input type="number" name="tips" class="form-control" id="shuttle-log-tips" placeholder="$">
                 </div>
 
             </div>
             <div class="row">
-                    <div class="form-group col">
+                    <div class="form-group col-sm">
                             <!-- <label for="shuttle-log-tourist">Tourist</label> -->
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="tourist" value="true" id="shuttle-log-tourist">
@@ -158,7 +158,7 @@
                         </div>
             </div>
             <div class="row">
-                <div class="form-group col-6">
+                <div class="form-group col-md col-sm col-lg-6">
                     <label for="shuttle-log-note">Notes</label>
                     <textarea type="text" name="note" class="form-control" id="shuttle-log-note" rows="6"></textarea>
                 </div>
