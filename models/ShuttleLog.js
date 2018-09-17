@@ -28,7 +28,7 @@ var ShuttleLogSchema = new Schema ({
     dropOff: String,
     passengers: Number, 
     contact: String, 
-    tips: Number, 
+    tips: String, 
     tourist: {
         type: Boolean, 
         default: false
@@ -57,6 +57,11 @@ var ShuttleLogSchema = new Schema ({
 
 //     return this.formattedDate;
 // };
+
+ShuttleLogSchema.methods.formatTips = function() {
+    this.tips = "$" + this.tips;
+    return this.tips; 
+}
 
 var ShuttleLog = mongoose.model("ShuttleLog", ShuttleLogSchema);
 

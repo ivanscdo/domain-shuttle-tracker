@@ -78,6 +78,7 @@ app.get("/logs-by-shuttle/:shuttle", function(req, res) {
 app.post("/submit-shuttle-log", function(req, res) {
     var shuttleLog = new db.ShuttleLog(req.body);
     // shuttleLog.formatDate();
+    shuttleLog.formatTips();
 
     db.ShuttleLog.create(shuttleLog)
         .then(function(dbShuttleLog) {
