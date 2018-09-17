@@ -87,7 +87,7 @@ app.post("/submit-shuttle-log", function(req, res) {
         .catch(function(err) {
             res.json(err);
         })
-    // console.log(req.body);
+    console.log(req.body);
     // res.json(req.body);
 
 });

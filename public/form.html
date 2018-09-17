@@ -78,21 +78,34 @@
                 </div>
                 <div class="form-group col-sm">
                     <label for="shuttle-log-date">Date</label>
-                    <input type="text" name="date" class="form-control" id="shuttle-log-date" placeholder="MM/DD/YY">
+                    <input type="date" name="date" class="form-control" id="shuttle-log-date" placeholder="MM/DD/YY">
                 </div>
                 <div class="form-group col-sm">
                     <label for="shuttle-type">Shuttle</label>
-                    <input type="text" name="shuttle" class="form-control" id="shuttle-type" placeholder="ADA or 13 Passenger">
+                    <!-- <input type="text" name="shuttle" class="form-control" id="shuttle-type" placeholder="ADA or 13 Passenger"> -->
+                    <select class="form-control" name="shuttle"  id="shuttle-type">
+                        <option>Black 13 Passenger</option>
+                        <option>Black ADA</option>
+                        <option>Blue</option>
+                        <option>Green ADA</option>
+                    </select>
+                    
                 </div>
                 <div class="form-group col-sm">
                     <label for="shuttle-driver-shift">Shift</label>
-                    <input type="text" name="shift" class="form-control" id="shuttle-driver-shift" placeholder="AM, MID, or PM">
+                    <!-- <input type="text" name="shift" class="form-control" id="shuttle-driver-shift" placeholder="AM, MID, or PM"> -->
+                    <select class="form-control" name="shift"  id="shuttle-driver-shift">
+                        <option>AM</option>
+                        <option>MID</option>
+                        <option>PM</option>
+                    </select>
+
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-sm col-md-4">
                     <label for="shuttle-log-time">Time</label>
-                    <input type="text" name="time" class="form-control" id="shuttle-log-time" placeholder="00:00">
+                    <input type="time" name="time" class="form-control" id="shuttle-log-time" >
                 </div>
                 <div class="form-group col-sm col-md-4">
                     <label for="shuttle-log-pickUp">Pick Up Location</label>
@@ -172,5 +185,11 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <script>
+        // var defaultFormDate = document.getElementById("shuttle-log-date");
+        // defaultFormDate.value = new Date();
+    </script>
+
   </body>
 </html>

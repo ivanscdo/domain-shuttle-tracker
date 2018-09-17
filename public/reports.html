@@ -157,7 +157,8 @@
                 // console.log(data[0].name);
 
                 for(let i = 0;i < data.length; i++) {
-                    console.log(data[i].name);
+                    // console.log(data[i].name);
+                    console.log(data[i]);
                     var logTableRow = $("<tr>");
                     var logTableHead = $("<th>");
 
@@ -186,10 +187,16 @@
 
                         } 
                         else if (value === "date" ){
-                            var date = new Date(data[i][value]);
+                            // var date = new Date(data[i][value]);
+                            var date = data[i][value];
 
                             var dateTD = $("<td>");
-                            dateTD.text(date.toDateString());
+                            // dateTD.text(date.toDateString());
+                            // dateTD.text(date.toLocaleDateString('en-US'), { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+                            // dateTD.text(date);
+                            // dateTD.text(data[i][value]);
+                            dateTD.text(date.substring(0,10));
+
                             logTableRow.append(dateTD);
 
                         } 
