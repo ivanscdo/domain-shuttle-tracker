@@ -17,5 +17,12 @@
   "bugs": {
     "url": "https://github.com/ivanscdo/domain-shuttle-tracker/issues"
   },
-  "homepage": "https://github.com/ivanscdo/domain-shuttle-tracker#readme"
+  "homepage": "https://github.com/ivanscdo/domain-shuttle-tracker#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "logger": "0.0.1",
+    "mongoose": "^5.2.15",
+    "path": "^0.12.7"
+  }
 }
