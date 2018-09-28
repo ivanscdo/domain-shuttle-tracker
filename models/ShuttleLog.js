@@ -11,10 +11,10 @@ var ShuttleLogSchema = new Schema ({
         type: Date, 
         default: Date.now(), 
     }, 
-    // formattedDate: {
-    //     type: Date, 
-    //     default: Date.now(), 
-    // }, 
+    dateString: {
+        type: String, 
+        // default: Date.now(), 
+    }, 
     shift: {
         type:String, 
         // required: true
@@ -50,18 +50,61 @@ var ShuttleLogSchema = new Schema ({
 }
 });
 
-// ShuttleLogSchema.methods.formatDate = function() {
-//     // this.formattedDate = this.date.replace(/ISODate/, "");
-//     this.formattedDate = new Date(this.date);
+ShuttleLogSchema.methods.formatDate = function() {
+    // this.formattedDate = this.date.replace(/ISODate/, "");
+    // this.formattedDate = this.date.substring(0,10);
+    var newDate = new Date(this.date);
+    // this.formattedDate = newDate.toDateString();
+    var newDateISO = newDate.toISOString();
+    this.dateString = newDateISO.substring(0,10);
 
 
-//     return this.formattedDate;
-// };
+
+    return this.dateString;
+};
 
 ShuttleLogSchema.methods.formatTips = function() {
     this.tips = "$" + this.tips;
     return this.tips; 
 }
+
+ShuttleLogSchema.methods.timezoneOffsetLogCreated = function() {
+    // console.log(`this.createdAt: ${this.logCreated}`);
+    // var offsetCreated = new Date(this.logCreated);
+    var offsetCreated = new Date();
+    // console.log(`offsetCreated: ${offsetCreated}`);
+    var offsetCreatedUTC = offsetCreated.getUTCHours();
+    // console.log(`offsetCreatedUTC: ${offsetCreatedUTC}`);
+    var date = Date();
+    var timezoneOffset = date.substring(29,31);
+    var timezoneOffsetInt = parseInt(timezoneOffset, 10);
+
+    if ( offsetCreatedUTC <= timezoneOffsetInt) {
+        offsetCreated.setUTCHours( offsetCreatedUTC - timezoneOffsetInt );
+        // console.log(`offsetCreated post offset: ${offsetCreated}`)
+        this.logCreated = offsetCreated;
+        // console.log(`this.logCreated post offset: ${this.logCreated}`)
+        return this.logCreated;
+    } else if ( offsetCreatedUTC > timezoneOffsetInt ) {
+        // console.log(`logCreated no offset: ${logCreated}`)
+        return this.logCreated;
+    }
+
+}
+
+// ShuttleLogSchema.methods.timezoneOffsetLogUpdated = function() {
+//     var offsetUpdated = new Date(this.updatedAt);
+//     var offsetUpdatedUTC = offsetUpdated.getUTCHours();
+
+//     if ( offsetUpdatedUTC <= 5) {
+//         offsetUpdated.setUTCHours( offsetUpdatedUTC - 5 )
+//         this.updatedAt = offsetUpdated;
+//         return this.updatedAt;
+//     } else if ( offsetUpdatedUTC > 5 ) {
+//         return this.updatedAt;
+//     }
+
+// }
 
 var ShuttleLog = mongoose.model("ShuttleLog", ShuttleLogSchema);
 
