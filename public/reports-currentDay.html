@@ -13,14 +13,14 @@
         .table {
             background-color: #e9ecef;
         }
-        /* .th-short-width-pass-con-tips {
+        .th-short-width-pass-con-tips {
             width: 1px;
             padding: 4px !important
         }
         .th-long-width-date {
-            padding: 0px 100px 4px 4px !important
+            padding: 0px 60px 4px 4px !important
         }
-        .th-long-width-pickup-dropoff {
+        /* .th-long-width-pickup-dropoff {
             padding: 0px 0px 4px 0px !important;
             width: 0px
         } */
@@ -60,7 +60,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="/reports/current-day">Current Day</a>
-                                <a class="dropdown-item" href="/reports">Reports by Name</a>
+                                <a class="dropdown-item" href="/reports">Report by Name</a>
                             <!-- <a class="dropdown-item" href="/reports">Report by Date</a> -->
                             <!-- <a class="dropdown-item" href="/reports">Report by Shuttle</a> -->
                             </div>
@@ -81,9 +81,9 @@
     
     <div class="jumbotron">
         <h1 class="display-4">Reports</h1>
-        <h2>Pull all reports by Name</h2>
+        <h2>Pull today's reports by Name</h2>
 
-        <p class="lead">Search all shuttle logs by shuttle driver</p>
+        <p class="lead">Search all shuttle logs submitted today by shuttle driver</p>
         <hr class="my-4">
         <div class="input-group">
             <div class="input-group-prepend">
@@ -91,16 +91,16 @@
             </div>
             <!-- <input class="form-control" id="searched-shuttle-driver"> -->
             <select class="form-control" id="searched-shuttle-driver">
-                    <option>Greg</option>
-                    <option>Mike</option>
-                    <option>Joe</option>
-                    <option>Troy</option>
-                    <option>Penny</option>
-                    <option>Coco</option>
-                    <option>Mel</option>
-                    <option>ivan</option>
+                <option>Greg</option>
+                <option>Mike</option>
+                <option>Joe</option>
+                <option>Troy</option>
+                <option>Penny</option>
+                <option>Coco</option>
+                <option>Mel</option>
+                <option>ivan</option>
+            </select>
 
-                </select>
             <button type="submit" class="btn btn-info col-md-2 col-sm" id="search-by-name">Search</button>
         </div>
     </div>
@@ -174,7 +174,7 @@
             // console.log(searchedShuttleDriver);
             // console.log("red wine, ...");
     
-            $.get("/api/logs-by-name/" + searchedShuttleDriver, function(data) {
+            $.get("/api/reports/current-day/" + searchedShuttleDriver, function(data) {
                 // console.log(data);
                 // console.log(data.length);
                 // console.log(data[0].name);

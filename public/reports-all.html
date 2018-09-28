@@ -87,7 +87,7 @@
         <hr class="my-4">
         <div class="input-group">
             <div class="input-group-prepend">
-                <span class="input-group-text">Search by Name</span>
+                <span class="input-group-text">Driver Name</span>
             </div>
             <!-- <input class="form-control" id="searched-shuttle-driver"> -->
             <select class="form-control" id="searched-shuttle-driver">
@@ -99,10 +99,36 @@
                     <option>Coco</option>
                     <option>Mel</option>
                     <option>ivan</option>
-
                 </select>
-            <button type="submit" class="btn btn-info col-md-2 col-sm" id="search-by-name">Search</button>
+            <button type="submit" class="btn btn-info col-md-2 col-sm" id="search-all">Search</button>
         </div>
+
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">From Date</span>
+            </div>
+            <input type="date" class="form-control" id="dateFrom" placeholder="MM/DD/YY">
+        </div>
+
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">To Date</span>
+            </div>
+            <input type="date" class="form-control" id="dateTo" placeholder="MM/DD/YY">
+        </div>
+
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Shuttle</span>
+            </div>
+            <select class="form-control" name="shuttle"  id="shuttle-type">
+                <option>Black 13 Passenger</option>
+                <option>Black ADA</option>
+                <option>Blue 8 Passenger</option>
+                <option>Green ADA</option>
+            </select>
+        </div>
+
     </div>
 
 </div>
@@ -167,14 +193,17 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
     <script type="text/javascript">
-        $("#search-by-name").on("click", function() {
+        $("#search-all").on("click", function() {
             $("#display-logs").empty();
-            var searchedShuttleDriver = $("#searched-shuttle-driver").val().trim();
+
+            var searchedDateFrom = $("#dateFrom").val().trim();
+            var searchedDateTo = $("#dateTo").val().trim();
+
     
             // console.log(searchedShuttleDriver);
             // console.log("red wine, ...");
     
-            $.get("/api/logs-by-name/" + searchedShuttleDriver, function(data) {
+            $.get("/api/reports/" + searchedDateFrom + "/" + searchedDateTo, function(data) {
                 // console.log(data);
                 // console.log(data.length);
                 // console.log(data[0].name);
