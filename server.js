@@ -171,15 +171,25 @@ app.get("/api/reports/current-day/:name", function(req, res) {
     // res.send(currentDate);
 });
 
-// app.get("/api/reports/:name/:dateFrom/:dateTo/:shuttle/:shift/:timeFrom/:timeTo/:pickUp/:dropOff/:contact/:tips/:tourist/:resident/:northside", function(req, res) {
-app.get("/api/reports/:dateFrom/:dateTo", function(req, res) {
+// app.get("/api/reports/:shuttleDriver/:dateFrom/:dateTo/:shuttle/:shift/:timeFrom/:timeTo/:pickUp/:dropOff/:passengers/:contact/:tipsFrom/:tipsTo/:tourist/:resident/:northside/:notes", function(req, res) {
+// app.get("/api/reports/:dateFrom/:dateTo", function(req, res) {
+// app.get("/api/reports/:shuttleDriver/:dateFrom/:dateTo/:shuttle/:shift/:timeFrom/:timeTo/:pickUp/:dropOff/:passengers/:contact/:tipsFrom/:tipsTo", function(req, res) {
+// app.get("/api/reports/:shuttleDriver/:dateFrom/:dateTo/:shuttle/:shift/:timeFrom/:timeTo/:passengers/:contact/:tipsFrom/:tipsTo", function(req, res) {
+// app.get("/api/reports/:shuttleDriver/:dateFrom/:dateTo/:shuttle/:shift/:passengers/:contact/:tipsFrom/:tipsTo", function(req, res) {
+// app.get("/api/reports/:shuttleDriver/:dateFrom/:dateTo/:shuttle/:shift/:passengers/:contact", function(req, res) {
+app.get("/api/reports/:shuttleDriver/:dateFrom/:dateTo/:shuttle/:shift/:timeFrom/:timeTo/:pickUp/:dropOff/:passengers/:contact", function(req, res) {
+
+
+
+
+
 // app.get("/api/reports/:timeFrom/:timeTo", function(req, res) {
 // app.get("/api/reports/:tourist/:resident/:northside", function(req, res) {
 // app.get("/api/reports/:pickUp/:dropOff", function(req, res) {
 // app.get("/api/reports/:contact/:tips", function(req, res) {
 // app.get("/api/reports/:shuttle/:shift", function(req, res) {
 
-    var searchDriver = req.params.name;
+    var searchDriver = req.params.shuttleDriver;
 
     var dateFrom = new Date(req.params.dateFrom);
     // var searchDateFrom = req.params.dateFrom;
@@ -199,11 +209,15 @@ app.get("/api/reports/:dateFrom/:dateTo", function(req, res) {
     var searchTimeTo = req.params.timeTo;
     var searchPickUp = req.params.pickUp;
     var searchDropOff = req.params.dropOff;
+    var searchPassengers = req.params.passengers;
     var searchContact = req.params.contact;
-    var searchTips = req.params.tips;
+    var searchTipsFrom = req.params.tipsFrom;
+    var searchTipsTo = req.params.tipsTo;
+
     var searchTourist = req.params.tourist;
     var searchResident = req.params.resident;
     var searchNorthside = req.params.northside;
+    var searchNotes = req.params.notes;
 
     // console.log(`
     // searchDateFrom: ${typeof searchDateFrom}
@@ -246,26 +260,31 @@ app.get("/api/reports/:dateFrom/:dateTo", function(req, res) {
     // `);
 
     db.ShuttleLog.find({
-        // name: searchDriver, 
+        name: searchDriver, 
         date:  {
             // $gte: new Date( req.params.dateFrom ),
             // $lte: new Date( req.params.dateTo )
             $gte: dateFrom,
             $lte: dateTo
         }, 
-        // shuttle: searchShuttle,
-        // shift: searchShift, 
-        // time: {
-        //     $gte: searchTimeFrom,
-        //     $lte: searchTimeTo
-        // },
-        // pickUp: searchPickUp,
-        // dropOff: searchDropOff
-        // contact: searchContact,
-        // tips: searchTips, 
+        shuttle: searchShuttle,
+        shift: searchShift, 
+        time: {
+            $gte: searchTimeFrom,
+            $lte: searchTimeTo
+        },
+        pickUp: searchPickUp,
+        dropOff: searchDropOff,
+        passengers: searchPassengers,
+        contact: searchContact,
+        // tips: {
+        //     $gte: searchTipsFrom,
+        //     $lte: searchTipsTo
+        // }, 
         // tourist: searchTourist, 
         // resident: searchResident,
-        // northside: searchNorthside
+        // northside: searchNorthside, 
+        // notes: searchNotes
     })
         .then(function(dbShuttleLog){
             res.json(dbShuttleLog);
@@ -321,7 +340,7 @@ app.get("/logs-by-shuttle/:shuttle", function(req, res) {
 app.post("/submit-shuttle-log", function(req, res) {
     var shuttleLog = new db.ShuttleLog(req.body);
     shuttleLog.formatDate();
-    shuttleLog.formatTips();
+    // shuttleLog.formatTips();
     shuttleLog.timezoneOffsetLogCreated();
     // shuttleLog.timezoneOffsetLogUpdated();
 
