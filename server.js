@@ -172,12 +172,16 @@ app.get("/api/reports/current-day/:name", function(req, res) {
 });
 
 // app.get("/api/reports/:shuttleDriver/:dateFrom/:dateTo/:shuttle/:shift/:timeFrom/:timeTo/:pickUp/:dropOff/:passengers/:contact/:tipsFrom/:tipsTo/:tourist/:resident/:northside/:notes", function(req, res) {
-// app.get("/api/reports/:dateFrom/:dateTo", function(req, res) {
 // app.get("/api/reports/:shuttleDriver/:dateFrom/:dateTo/:shuttle/:shift/:timeFrom/:timeTo/:pickUp/:dropOff/:passengers/:contact/:tipsFrom/:tipsTo", function(req, res) {
 // app.get("/api/reports/:shuttleDriver/:dateFrom/:dateTo/:shuttle/:shift/:timeFrom/:timeTo/:passengers/:contact/:tipsFrom/:tipsTo", function(req, res) {
 // app.get("/api/reports/:shuttleDriver/:dateFrom/:dateTo/:shuttle/:shift/:passengers/:contact/:tipsFrom/:tipsTo", function(req, res) {
 // app.get("/api/reports/:shuttleDriver/:dateFrom/:dateTo/:shuttle/:shift/:passengers/:contact", function(req, res) {
-app.get("/api/reports/:shuttleDriver/:dateFrom/:dateTo/:shuttle/:shift/:timeFrom/:timeTo/:pickUp/:dropOff/:passengers/:contact", function(req, res) {
+// app.get("/api/reports/:shuttleDriver/:dateFrom/:dateTo/:shuttle/:shift/:timeFrom/:timeTo/:pickUp/:dropOff/:passengers/:contact", function(req, res) {
+// app.get("/api/reports/:dateFrom/:dateTo/:tipsFrom/:tipsTo", function(req, res) {
+// app.get("/api/reports/:tourist/:resident/:northside/:noteExists", function(req, res) {
+app.get("/api/reports/:noteExists", function(req, res) {
+
+
 
 
 
@@ -217,7 +221,7 @@ app.get("/api/reports/:shuttleDriver/:dateFrom/:dateTo/:shuttle/:shift/:timeFrom
     var searchTourist = req.params.tourist;
     var searchResident = req.params.resident;
     var searchNorthside = req.params.northside;
-    var searchNotes = req.params.notes;
+    var searchNotes = req.params.noteExists;
 
     // console.log(`
     // searchDateFrom: ${typeof searchDateFrom}
@@ -260,23 +264,23 @@ app.get("/api/reports/:shuttleDriver/:dateFrom/:dateTo/:shuttle/:shift/:timeFrom
     // `);
 
     db.ShuttleLog.find({
-        name: searchDriver, 
-        date:  {
-            // $gte: new Date( req.params.dateFrom ),
-            // $lte: new Date( req.params.dateTo )
-            $gte: dateFrom,
-            $lte: dateTo
-        }, 
-        shuttle: searchShuttle,
-        shift: searchShift, 
-        time: {
-            $gte: searchTimeFrom,
-            $lte: searchTimeTo
-        },
-        pickUp: searchPickUp,
-        dropOff: searchDropOff,
-        passengers: searchPassengers,
-        contact: searchContact,
+        // name: searchDriver, 
+        // date:  {
+        //     // $gte: new Date( req.params.dateFrom ),
+        //     // $lte: new Date( req.params.dateTo )
+        //     $gte: dateFrom,
+        //     $lte: dateTo
+        // }, 
+        // shuttle: searchShuttle,
+        // shift: searchShift, 
+        // time: {
+        //     $gte: searchTimeFrom,
+        //     $lte: searchTimeTo
+        // },
+        // pickUp: searchPickUp,
+        // dropOff: searchDropOff,
+        // passengers: searchPassengers,
+        // contact: searchContact,
         // tips: {
         //     $gte: searchTipsFrom,
         //     $lte: searchTipsTo
@@ -284,7 +288,7 @@ app.get("/api/reports/:shuttleDriver/:dateFrom/:dateTo/:shuttle/:shift/:timeFrom
         // tourist: searchTourist, 
         // resident: searchResident,
         // northside: searchNorthside, 
-        // notes: searchNotes
+        noteExists: searchNotes
     })
         .then(function(dbShuttleLog){
             res.json(dbShuttleLog);
@@ -339,10 +343,11 @@ app.get("/logs-by-shuttle/:shuttle", function(req, res) {
 
 app.post("/submit-shuttle-log", function(req, res) {
     var shuttleLog = new db.ShuttleLog(req.body);
-    shuttleLog.formatDate();
+    shuttleLog.dateToDateString();
     // shuttleLog.formatTips();
     shuttleLog.timezoneOffsetLogCreated();
     // shuttleLog.timezoneOffsetLogUpdated();
+    shuttleLog.checkIfNoteExists();
 
     db.ShuttleLog.create(shuttleLog)
         .then(function(dbShuttleLog) {

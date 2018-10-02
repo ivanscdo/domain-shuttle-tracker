@@ -28,7 +28,7 @@ var ShuttleLogSchema = new Schema ({
     dropOff: String,
     passengers: Number, 
     contact: String, 
-    tips: String, 
+    tips: Number, 
     tourist: {
         type: Boolean, 
         default: false
@@ -42,6 +42,10 @@ var ShuttleLogSchema = new Schema ({
         default: false
     },
     note: String, 
+    noteExists: {
+        type: Boolean, 
+        default: false
+    }
 }, 
 {
     timestamps: {
@@ -50,7 +54,7 @@ var ShuttleLogSchema = new Schema ({
 }
 });
 
-ShuttleLogSchema.methods.formatDate = function() {
+ShuttleLogSchema.methods.dateToDateString = function() {
     // this.formattedDate = this.date.replace(/ISODate/, "");
     // this.formattedDate = this.date.substring(0,10);
     var newDate = new Date(this.date);
@@ -63,10 +67,10 @@ ShuttleLogSchema.methods.formatDate = function() {
     return this.dateString;
 };
 
-ShuttleLogSchema.methods.formatTips = function() {
-    this.tips = "$" + this.tips;
-    return this.tips; 
-}
+// ShuttleLogSchema.methods.formatTips = function() {
+//     this.tips = "$" + this.tips;
+//     return this.tips; 
+// }
 
 ShuttleLogSchema.methods.timezoneOffsetLogCreated = function() {
     // console.log(`this.createdAt: ${this.logCreated}`);
@@ -105,6 +109,14 @@ ShuttleLogSchema.methods.timezoneOffsetLogCreated = function() {
 //     }
 
 // }
+
+ShuttleLogSchema.methods.checkIfNoteExists = function() {
+    if( this.note ){
+        console.log("note exists");
+        console.log(this.note);
+        this.noteExists = true
+    }
+}
 
 var ShuttleLog = mongoose.model("ShuttleLog", ShuttleLogSchema);
 

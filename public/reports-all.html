@@ -81,12 +81,13 @@
     
     <div class="jumbotron">
         <h1 class="display-4">Reports</h1>
-        <h2>Pull all reports by Name</h2>
+        <h2>Pull reports by All Fields</h2>
 
-        <p class="lead">Search all shuttle logs by shuttle driver</p>
+        <p class="lead">Search shuttle logs by all fields</p>
         <hr class="my-4">
 
         <div class="input-group mb-3">
+
             <div class="input-group-prepend">
                 <span class="input-group-text">Shuttle Driver</span>
             </div>
@@ -101,24 +102,50 @@
                     <option>Mel</option>
                     <option>ivan</option>
                 </select>
-            <button type="submit" class="btn btn-info col-md-2 col-sm" id="search-all">Search</button>
+
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Shuttle</span>
+                </div>
+                <select id="search-shuttle" class="form-control" name="shuttle">
+                    <option>Black 13 Passenger</option>
+                    <option>Black ADA</option>
+                    <option>Blue 8 Passenger</option>
+                    <option>Green ADA</option>
+                </select>
+
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Shift</span>
+                </div>
+                <select id="search-shift" class="form-control" name="shuttle">
+                    <option>AM</option>
+                    <option>MID</option>
+                    <option>PM</option>
+                </select>
+
         </div>
 
         <div class="input-group mb-3">
+
             <div class="input-group-prepend">
                 <span class="input-group-text">From Date</span>
             </div>
             <input id="search-dateFrom" type="date" class="form-control" placeholder="MM/DD/YY">
-        </div>
 
-        <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text">To Date</span>
             </div>
             <input id="search-dateTo" type="date" class="form-control" placeholder="MM/DD/YY">
+
         </div>
 
-        <div class="input-group mb-3">
+        <!-- <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">To Date</span>
+            </div>
+            <input id="search-dateTo" type="date" class="form-control" placeholder="MM/DD/YY">
+        </div> -->
+
+        <!-- <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text">Shuttle</span>
             </div>
@@ -128,9 +155,9 @@
                 <option>Blue 8 Passenger</option>
                 <option>Green ADA</option>
             </select>
-        </div>
+        </div> -->
 
-        <div class="input-group mb-3">
+        <!-- <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text">Shift</span>
             </div>
@@ -139,21 +166,28 @@
                 <option>MID</option>
                 <option>PM</option>
             </select>
-        </div>
+        </div> -->
 
         <div class="input-group mb-3">
+
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">From Time</span>
             </div>
             <input id="search-timeFrom" type="time" class="form-control" placeholder="From Time" aria-label="From Time" aria-describedby="basic-addon1">
-        </div>
 
-        <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">To Time</span>
             </div>
             <input id="search-timeTo" type="time" class="form-control" placeholder="To Time" aria-label="To Time" aria-describedby="basic-addon1">
+
         </div>
+
+        <!-- <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">To Time</span>
+            </div>
+            <input id="search-timeTo" type="time" class="form-control" placeholder="To Time" aria-label="To Time" aria-describedby="basic-addon1">
+        </div> -->
 
         <!-- <div class="input-group mb-3">
             <div class="input-group-prepend">
@@ -176,6 +210,7 @@
         </div> -->
 
         <div class="input-group mb-3">
+
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">Pick Up Location</span>
             </div>
@@ -183,17 +218,23 @@
             <!-- <datalist id="search-pickUp">
                 <option value="Simon Guest Services">Simon Guest Services</option>
             </datalist> -->
-        </div>
 
-        <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">Drop Off Location</span>
             </div>
             <input id="search-dropOff" type="text" class="form-control" placeholder="Drop Off Location" aria-label="Drop Off Location" aria-describedby="basic-addon1">
-            <!-- <datalist id="search-dropOff">
-                <option value="Shake Shack">Shake Shack</option>
-            </datalist> -->
+
         </div>
+
+        <!-- <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Drop Off Location</span>
+            </div>
+            <input id="search-dropOff" type="text" class="form-control" placeholder="Drop Off Location" aria-label="Drop Off Location" aria-describedby="basic-addon1">
+            <datalist id="search-dropOff">
+                <option value="Shake Shack">Shake Shack</option>
+            </datalist>
+        </div> -->
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
@@ -211,20 +252,28 @@
 
 
         <div class="input-group mb-3">
+
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">From Tips</span>
                 <span class="input-group-text" id="basic-addon1">$</span>
             </div>
             <input id="search-tipsFrom" type="number" class="form-control" placeholder="Tips" aria-label="Tips" aria-describedby="basic-addon1">
+
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">To Tips</span>
+                <span class="input-group-text" id="basic-addon1">$</span>
+            </div>
+            <input id="search-tipsTo" type="number" class="form-control" placeholder="Tips" aria-label="Tips" aria-describedby="basic-addon1">
+
         </div>
 
-        <div class="input-group mb-3">
+        <!-- <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">To Tips</span>
                 <span class="input-group-text" id="basic-addon1">$</span>
             </div>
             <input id="search-tipsTo" type="text" class="form-control" placeholder="Tips" aria-label="Tips" aria-describedby="basic-addon1">
-        </div>
+        </div> -->
 
         <!-- <div class="input-group mb-3">
             <div class="input-group-prepend">
@@ -234,6 +283,7 @@
         </div> -->
 
         <div class="input-group mb-3">
+
             <div class="input-group-prepend">
                 <span class="input-group-text"> Tourist
                 </span>
@@ -241,9 +291,32 @@
                     <input id="search-tourist" type="checkbox" aria-label="Checkbox for following text input">
                 </div>
             </div>
+
+            <div class="input-group-prepend">
+                <span class="input-group-text"> Resident
+                </span>
+                <div class="input-group-text">
+                    <input id="search-resident" type="checkbox" aria-label="Checkbox for following text input">
+                </div>
+            </div>
+
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Northside</span>
+                <div class="input-group-text">
+                    <input id="search-northside" type="checkbox" aria-label="Checkbox for following text input">
+                </div>
+            </div>
+
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Notes</span>
+                <div class="input-group-text">
+                    <input id="search-notes" type="checkbox" aria-label="Checkbox for following text input">
+                </div>
+            </div>
+
         </div>
 
-        <div class="input-group mb-3">
+        <!-- <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text"> Resident
                 </span>
@@ -269,6 +342,10 @@
                     <input id="search-notes" type="checkbox" aria-label="Checkbox for following text input">
                 </div>
             </div>
+        </div> -->
+
+        <div class="input-group mb-3">
+            <button type="submit" class="btn btn-info col-md-2 col-sm" id="search-all">Search</button>
         </div>
 
     </div>
@@ -343,35 +420,68 @@
 
             $("#display-logs").empty();
             
-            var searchShuttleDriver = $("#search-shuttleDriver").val().trim();
-            var searchDateFrom = $("#search-dateFrom").val().trim();
-            var searchDateTo = $("#search-dateTo").val().trim();
-            var searchShuttle = $("#search-shuttle").val().trim();
-            var searchShift = $("#search-shift").val().trim();
-            var searchTimeFrom = $("#search-timeFrom").val().trim();
-            var searchTimeTo = $("#search-timeTo").val().trim();
-            var searchPickUp = $("#search-pickUp").val().trim();
-            var searchDropOff = $("#search-dropOff").val().trim();
-            var searchPassengers = $("#search-passengers").val().trim();
-            var searchContact = $("#search-contact").val().trim();
+            // var searchShuttleDriver = $("#search-shuttleDriver").val().trim();
+            // var searchDateFrom = $("#search-dateFrom").val().trim();
+            // var searchDateTo = $("#search-dateTo").val().trim();
+            // var searchShuttle = $("#search-shuttle").val().trim();
+            // var searchShift = $("#search-shift").val().trim();
+            // var searchTimeFrom = $("#search-timeFrom").val().trim();
+            // var searchTimeTo = $("#search-timeTo").val().trim();
+            // var searchPickUp = $("#search-pickUp").val().trim();
+            // var searchDropOff = $("#search-dropOff").val().trim();
+            // var searchPassengers = $("#search-passengers").val().trim();
+            // var searchContact = $("#search-contact").val().trim();
             // var searchTipsFrom = $("#search-tipsFrom").val().trim();
             // var searchTipsTo = $("#search-tipsTo").val().trim();
+
+            // if ( $("#search-tourist").val().trim() === "on") {
+            //     var searchTourist = true
+            // }
+            // else if ( $("#search-tourist").val().trim() === "off" ) {
+            //     var searchTourist = false                
+            // }
+
+            // if ( $("#search-resident").val().trim() === "on") {
+            //     var searchResident = true
+            // }
+            // else if ( $("#search-resident").val().trim() === "off" ) {
+            //     var searchResident = false                
+            // }
+
+            // if ( $("#search-northside").val().trim() === "on") {
+            //     var searchNorthside = true
+            // }
+            // else if ( $("#search-northside").val().trim() === "off" ) {
+            //     var searchNorthside = false                
+            // }
+
+            // console.log($("#search-tourist").prop("checked"))
+
             // var searchTourist = $("#search-tourist").val().trim();
+            var searchTourist = $("#search-tourist").prop("checked");
             // var searchResident = $("#search-resident").val().trim();
+            var searchResident = $("#search-resident").prop("checked");
             // var searchNorthside = $("#search-northside").val().trim();
+            var searchNorthside = $("#search-northside").prop("checked");
+            
             // var searchNotes = $("#search-notes").val().trim();
+            var searchNotes = $("#search-notes").prop("checked");
+
 
             // console.log(searchedShuttleDriver);
             // console.log("red wine, success!");
     
             // $.get("/api/reports/" + searchDateFrom + "/" + searchDateTo, function(data) {
-            $.get("/api/reports/" + searchShuttleDriver + "/" + searchDateFrom + "/" + searchDateTo
-             + "/" + searchShuttle + "/" + searchShift
-             + "/" + searchTimeFrom + "/" + searchTimeTo
-             + "/" + searchPickUp + "/" + searchDropOff
-              + "/" + searchPassengers + "/" + searchContact
+            $.get("/api/reports" 
+            // + "/" + searchShuttleDriver
+            // + "/" + searchDateFrom + "/" + searchDateTo
+            //  + "/" + searchShuttle + "/" + searchShift
+            //  + "/" + searchTimeFrom + "/" + searchTimeTo
+            //  + "/" + searchPickUp + "/" + searchDropOff
+            //   + "/" + searchPassengers + "/" + searchContact
             //    + "/" + searchTipsFrom + "/" + searchTipsTo
-            //  + "/" + searchResident + "/" + searchNorthside
+            //  + "/" + searchTourist + "/" + searchResident + "/" + searchNorthside
+             + "/" + searchNotes
              , function(data) {
             // $.get("/api/reports/" + searchShuttleDriver + "/" + searchDateFrom + "/" + searchDateTo, function(data) {
 
@@ -494,9 +604,9 @@
                         else if (value === "tips") {
                             var tipsTD = $("<td>");
                             var tips = data[i][value];
-                            // var formattedTips = "$" + tips;
+                            var formattedTips = "$" + tips;
 
-                            tipsTD.text(tips);
+                            tipsTD.text(formattedTips);
                             logTableRow.append(tipsTD);
                         }
                     }
