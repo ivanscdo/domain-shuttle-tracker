@@ -493,6 +493,7 @@
                 for(let i = 0;i < data.length; i++) {
                     // console.log(data[i].name);
                     console.log(data[i]);
+                    console.log(data[i]._id)
                     var logTableRow = $("<tr>");
                     var logTableRowHead = $("<th>");
 
@@ -505,6 +506,7 @@
 
 
                     for(let value in data[i]) {
+
                         // console.log(value + ":" + data[i][value]);
                         if (value === "name") {
                             // console.log(value + ":" + data[i][value]);
@@ -543,11 +545,11 @@
                             // dateTD.text(date.toDateString());
                             dateTD.text(newDate.toDateString());
 
-                            console.log(`
-                            date:${date}
-                            subDate: ${subDate}
-                            newDate:${newDate}
-                            `);
+                            // console.log(`
+                            // date:${date}
+                            // subDate: ${subDate}
+                            // newDate:${newDate}
+                            // `);
 
                             logTableRow.append(dateTD);
                         } 
