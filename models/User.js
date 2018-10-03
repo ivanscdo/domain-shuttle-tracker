@@ -6,12 +6,12 @@ var UserSchema = new Schema ({
     fullName: String, 
     firstName: {
         type: String, 
-        required: true, 
+        // required: true, 
         trim: true
     },
      lastName: {
          type: String, 
-         required: true, 
+        //  required: true, 
          trim: true
      },
     username: {
@@ -26,7 +26,7 @@ var UserSchema = new Schema ({
      },
       role: {
           type: Number, 
-          required: true
+        //   required: true
       }, 
 }, 
 {

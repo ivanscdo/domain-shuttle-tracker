@@ -1,20 +1,51 @@
 var express = require("express");
+var session = require("express-session");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 var path = require("path");
+var passport = require("passport");
+var LocalStrategy = require("passport-local").Strategy;
+
 
 var PORT = process.env.PORT || 3000;
-
 var db = require("./models");
-
 var app = express();
 
+app.use(express.static("public"));
+app.use(session({ secret: "dogs", resave: false, saveUninitialized: false}));
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(logger("dev"));
 
-app.use(bodyParser.urlencoded({extended:true}));
+passport.use(new LocalStrategy(
+    function(username, password, done) {
+        db.User.findOne({username: username}, function(err, user) {
+            // console.log(username, password, err, user, done);
+            // console.log(user.username, user.password);
 
-app.use(express.static("public"));
+            if (err) {return done(err); }
+            if (!user || !user.password) {
+                return done(null, false);
+            }
+            // if (!user.password)) {
+            //     return done(null, false, {message: "Incorect password."});
+            // }
+            return done(null, user);
+        });
+    }
+));
+
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
+  });
+  
+  passport.deserializeUser(function(id, done) {
+    db.User.findById(id, function(err, user) {
+      done(err, user);
+    });
+  });
 
 mongoose.Promise = Promise;
 
@@ -24,32 +55,50 @@ if (process.env.MONGODB_URI) {
     mongoose.connect("mongodb://localhost/shuttlelogdb");
 }
 
-app.get("/test", function(req, res) {
+app.get("/test/:username/:password", function(req, res) {
     // var date = Date();
     // var timezoneOffsetFull = date.substring(28,31);
     // var timezoneOffsetFullInt = parseInt(timezoneOffsetFull, 10);
     // var timezoneOffset = date.substring(29,31);
     // var timezoneOffsetInt = parseInt(timezoneOffset, 10);
 
-    var offsetCreated = new Date();
-    var offsetCreatedUTC = offsetCreated.getUTCHours();
+    // var offsetCreated = new Date();
+    // var offsetCreatedUTC = offsetCreated.getUTCHours();
 
-    var date = Date();
-    var timezoneOffset = date.substring(29,31);
-    var timezoneOffsetInt = parseInt(timezoneOffset,10);
+    // var date = Date();
+    // var timezoneOffset = date.substring(29,31);
+    // var timezoneOffsetInt = parseInt(timezoneOffset,10);
 
-    if ( offsetCreatedUTC <= timezoneOffsetInt) {
-        offsetCreated.setUTCHours( offsetCreatedUTC - timezoneOffsetInt );
+    // if ( offsetCreatedUTC <= timezoneOffsetInt) {
+    //     offsetCreated.setUTCHours( offsetCreatedUTC - timezoneOffsetInt );
         
-        res.send(offsetCreated);
+    //     res.send(offsetCreated);
 
 
-    } else if ( offsetCreatedUTC > timezoneOffsetInt ) {
+    // } else if ( offsetCreatedUTC > timezoneOffsetInt ) {
 
-        res.send(offsetCreated);
+    //     res.send(offsetCreated);
 
-    }
-})
+    // }
+
+    var username = req.params.username,
+        password = req.params.password;
+
+    db.User.find({
+        username: username, 
+        password: password
+    })
+    .then(function(dbUser) {
+            res.json(dbUser);
+        })
+        .catch(function(err){
+            res.json(err);
+        });
+
+
+
+
+});
 
 app.get("/form", function(req, res) {
     res.sendFile(path.join(__dirname, "/public/form.html"));
@@ -340,6 +389,15 @@ app.get("/logs-by-shuttle/:shuttle", function(req, res) {
         });
 });
 
+app.get("/red-wine-success", 
+// passport.authenticate('local', { session: false }),
+ function(req, res) {
+    console.log(req);
+    console.log(req.user);
+    // res.send("red wine, success!");
+    res.json({_id: req.user._id, username: req.user.username})
+});
+
 
 app.post("/submit-shuttle-log", function(req, res) {
     var shuttleLog = new db.ShuttleLog(req.body);
@@ -361,6 +419,20 @@ app.post("/submit-shuttle-log", function(req, res) {
     // res.json(req.body);
 
 });
+
+app.post('/login',
+  passport.authenticate('local', {  successRedirect: '/red-wine-success',
+                                    failureRedirect: '/login',
+                                    // failureFlash: false 
+                                    // failureFlash: "Invalid username or password."
+                                })
+);
+
+// app.post('/login', 
+//   passport.authenticate('local', { failureRedirect: '/login' }),
+//   function(req, res) {
+//     res.redirect('/red-wine-success');
+//   });
 
 app.listen(PORT, function() {
     console.log("App running on http://localhost:" + PORT);
