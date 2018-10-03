@@ -20,7 +20,8 @@
     <!-- <div class="container"> -->
     
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">The Domain Shuttle Log Tracker</a>
+        <!-- <a class="navbar-brand" href="/">The Domain Shuttle Log Tracker</a> -->
+        <a class="navbar-brand" href="/">Shuttle Log Tracker</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -33,28 +34,28 @@
                     <!-- <li class="nav-item">
                     <a class="nav-link" href="#">Resources</a>
                 </li> -->
-                    <li class="nav-item dropdown">
+                    <!-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Shuttle Logs
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="/form">Log Rides</a>
-                        <!-- <a class="dropdown-item" href="/all-logs">Past Rides</a> -->
-                        <!-- <a class="dropdown-item" href="#">Reports</a> -->
+                        <a class="dropdown-item" href="/all-logs">Past Rides</a>
+                        <a class="dropdown-item" href="#">Reports</a>
                         </div>
-                    </li>
+                    </li> -->
 
-                    <li class="nav-item dropdown">
+                    <!-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Reports
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="/reports/current-day">Current Day</a>
                             <a class="dropdown-item" href="/reports">Reports By Name</a>
-                        <!-- <a class="dropdown-item" href="/reports">Report by Date</a> -->
-                        <!-- <a class="dropdown-item" href="/reports">Report by Shuttle</a> -->
+                        <a class="dropdown-item" href="/reports">Report by Date</a>
+                        <a class="dropdown-item" href="/reports">Report by Shuttle</a>
                         </div>
-                    </li>
+                    </li> -->
 
 
                     <!-- <li class="nav-item">
@@ -73,27 +74,47 @@
         <p class="lead">Track your shuttle rides, review past rides, see trends, and pull reports all from a central location.</p>
         <hr class="my-4">
         <p>Click below to get started.</p>
-        <!-- <a class="btn btn-primary btn-lg" href="/login" role="button">Log In</a> -->
+        <a class="btn btn-info btn-lg" href="/login" role="button">Log In</a>
     </div>
 
     <div class="row">
         <div class="col-md-6 col-sm">
-            <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Log Shuttle Rides</h5>
-                <p class="card-text">Submit a log detailing your most recent ride.</p>
-                <a class="btn btn-info btn-lg" href="/form" role="button">Log Rides</a>
-            </div>
-            </div>
+                <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Log Shuttle Rides</h5>
+                    <p class="card-text">Submit a log detailing your most recent ride.</p>
+                    <!-- <a class="btn btn-info btn-lg" href="/form" role="button">Log Rides</a> -->
+                </div>
+                </div>
         </div>
-        <br>
         <div class="col-md-6 col-sm">
             <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Pull Reports</h5>
-                <p class="card-text">Review past logs by organized by shuttle driver.</p>
-                <a class="btn btn-info btn-lg" href="/reports" role="button">Pull Reports</a>
+                <div class="card-body">
+                    <h5 class="card-title">Pull Reports</h5>
+                    <p class="card-text">Review past logs by organized by shuttle driver.</p>
+                    <!-- <a class="btn btn-info btn-lg" href="/reports" role="button">Pull Reports</a> -->
+                </div>
             </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-6 col-sm">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Admin Login</h5>
+                    <p class="card-text">Add/remove drivers and admins, assign access levels, review logs, pull reports, and access comprehensive full field search.</p>
+                    <!-- <a class="btn btn-info btn-lg" href="/reports" role="button">Pull Reports</a> -->
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Driver Login</h5>
+                    <p class="card-text">Log rides, view rides by current day, week-to-date, and month-to-date</p>
+                    <!-- <a class="btn btn-info btn-lg" href="/reports" role="button">Pull Reports</a> -->
+                </div>
             </div>
         </div>
     </div>

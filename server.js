@@ -1,3 +1,4 @@
+// var flash = require('connect-flash');
 var express = require("express");
 var session = require("express-session");
 var bodyParser = require("body-parser");
@@ -18,16 +19,24 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(logger("dev"));
+// app.use(flash());
 
 passport.use(new LocalStrategy(
     function(username, password, done) {
         db.User.findOne({username: username}, function(err, user) {
-            // console.log(username, password, err, user, done);
+            console.log(username, password, err, user, done);
             // console.log(user.username, user.password);
 
             if (err) {return done(err); }
             if (!user || !user.password) {
                 return done(null, false);
+            }
+            if (user.username === username && user.password === password) {
+                return done(null, user);
+            }
+            if (user && username.password !== password) {
+                return done(null, false, {message: "Incorect password."});
+                // });
             }
             // if (!user.password)) {
             //     return done(null, false, {message: "Incorect password."});
@@ -392,10 +401,11 @@ app.get("/logs-by-shuttle/:shuttle", function(req, res) {
 app.get("/red-wine-success", 
 // passport.authenticate('local', { session: false }),
  function(req, res) {
-    console.log(req);
+    // console.log(req);
     console.log(req.user);
     // res.send("red wine, success!");
-    res.json({_id: req.user._id, username: req.user.username})
+    res.json({_id: req.user._id, username: req.user.username});
+    // res.render({messages: req.flash("red wine, success!")});
 });
 
 
@@ -423,7 +433,7 @@ app.post("/submit-shuttle-log", function(req, res) {
 app.post('/login',
   passport.authenticate('local', {  successRedirect: '/red-wine-success',
                                     failureRedirect: '/login',
-                                    // failureFlash: false 
+                                    // failureFlash: true
                                     // failureFlash: "Invalid username or password."
                                 })
 );
